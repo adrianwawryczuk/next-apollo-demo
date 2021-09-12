@@ -1,5 +1,5 @@
 module.exports = {
-    service: {
-        name: "backend"
-    }
+  service: {
+    name: 'backend',
+  },
 }

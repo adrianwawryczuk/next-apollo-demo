@@ -1,8 +1,8 @@
 const resolverMap = {
-    Query: {
-        helloWorld(): string {
-            return `👋 Hello world! 👋`;
-        },
+  Query: {
+    helloWorld(): string {
+      return `👋 Hello world! 👋`
     },
-};
-export default resolverMap;
+  },
+}
+export default resolverMap
