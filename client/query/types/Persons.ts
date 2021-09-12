@@ -8,12 +8,13 @@
 // ====================================================
 
 export interface Persons_persons {
-  __typename: "Person";
-  address: string;
-  name: string;
-  phoneNumber: string;
+  __typename: 'Person'
+  id: string
+  address: string
+  name: string
+  phoneNumber: string
 }
 
 export interface Persons {
-  persons: Persons_persons[];
+  persons: Persons_persons[]
 }

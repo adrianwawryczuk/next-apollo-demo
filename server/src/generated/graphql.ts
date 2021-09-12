@@ -15,6 +15,7 @@ export type Scalars = {
 export type Person = {
   __typename?: 'Person';
   address: Scalars['String'];
+  id: Scalars['String'];
   name: Scalars['String'];
   phoneNumber: Scalars['String'];
 };
@@ -109,6 +110,7 @@ export type ResolversParentTypes = {
 
 export type PersonResolvers<ContextType = any, ParentType extends ResolversParentTypes['Person'] = ResolversParentTypes['Person']> = {
   address?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   phoneNumber?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;

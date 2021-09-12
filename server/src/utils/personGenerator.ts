@@ -4,6 +4,7 @@ import { arrayOf } from './arrayOf'
 
 function generatePerson(): Person {
   return {
+    id: casual.functions().uuid(),
     address: casual.functions().address(),
     name: casual.functions().name(),
     phoneNumber: casual.functions().phone(),

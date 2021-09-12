@@ -1,21 +1,20 @@
-import Link from 'next/link'
 import { initializeApollo } from '../service/apolloClient'
 import { PERSONS_QUERY } from '../query/personsQuery'
 import { GetServerSideProps } from 'next'
 import { Persons } from '../query/types/Persons'
 import { FC } from 'react'
+import { PersonCard } from '../components/PersonCard'
+import styles from './PeoplesPage.module.css'
 
 interface NamesPageProps {
   persons: Persons['persons']
 }
 const PeoplesPage: FC<NamesPageProps> = (props) => {
-  console.log(props)
-
   return (
-    <div>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
+    <div className={styles.peoplesContainer}>
+      {props.persons.map((person) => (
+        <PersonCard {...person} key={person.id} />
+      ))}
     </div>
   )
 }

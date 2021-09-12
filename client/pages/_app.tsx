@@ -7,9 +7,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <div style={{ margin: '20px' }}>
-        <Component {...pageProps} />
-      </div>
+      <Component {...pageProps} />
     </ApolloProvider>
   )
 }

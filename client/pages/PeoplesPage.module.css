@@ -1,0 +1,7 @@
+.peoplesContainer {
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  background: #d7d7d7;
+  flex-wrap: wrap;
+}

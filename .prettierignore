@@ -4,3 +4,5 @@ node_modules
 client/.next
 client/query/types
 server/src/generated
+client/graphql-schema.json
+server/graphql.schema.json
