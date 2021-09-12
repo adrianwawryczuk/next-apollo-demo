@@ -4,9 +4,16 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: HelloWorld
+// GraphQL query operation: Persons
 // ====================================================
 
-export interface HelloWorld {
-  helloWorld: string;
+export interface Persons_persons {
+  __typename: "Person";
+  address: string;
+  name: string;
+  phoneNumber: string;
+}
+
+export interface Persons {
+  persons: Persons_persons[];
 }

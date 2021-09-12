@@ -1,8 +1,8 @@
+import { personsResolver } from './resolver/personsResolver'
+
 const resolverMap = {
   Query: {
-    helloWorld(): string {
-      return `👋 Hello world! 👋`
-    },
+    persons: personsResolver,
   },
 }
 export default resolverMap
