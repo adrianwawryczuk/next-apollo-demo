@@ -3,7 +3,12 @@ schema {
 }
 
 type Query {
+  persons(page: Int): Persons
+}
+
+type Persons {
   persons: [Person!]!
+  count: Int!
 }
 
 type Person {

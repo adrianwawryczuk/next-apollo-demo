@@ -20,9 +20,15 @@ export type Person = {
   phoneNumber: Scalars['String'];
 };
 
+export type Persons = {
+  __typename?: 'Persons';
+  count: Scalars['Int'];
+  persons: Array<Person>;
+};
+
 export type Query = {
   __typename?: 'Query';
-  persons: Array<Person>;
+  persons?: Maybe<Persons>;
 };
 
 
@@ -95,7 +101,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
   Person: ResolverTypeWrapper<Person>;
+  Persons: ResolverTypeWrapper<Persons>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
 };
@@ -103,7 +111,9 @@ export type ResolversTypes = {
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  Int: Scalars['Int'];
   Person: Person;
+  Persons: Persons;
   Query: {};
   String: Scalars['String'];
 };
@@ -116,12 +126,19 @@ export type PersonResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+export type PersonsResolvers<ContextType = any, ParentType extends ResolversParentTypes['Persons'] = ResolversParentTypes['Persons']> = {
+  count?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   persons?: Resolver<Array<ResolversTypes['Person']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  persons?: Resolver<Maybe<ResolversTypes['Persons']>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
   Person?: PersonResolvers<ContextType>;
+  Persons?: PersonsResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 

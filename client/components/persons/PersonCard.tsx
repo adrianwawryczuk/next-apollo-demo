@@ -1,9 +1,9 @@
 import { FC } from 'react'
-import { Persons_persons } from '../query/types/Persons'
-import { Label } from './Label'
+import { Persons_persons_persons } from '../../query/types/Persons'
+import { Label } from '../Label'
 import styles from './PersonCard.module.css'
 
-export const PersonCard: FC<Persons_persons> = (props) => {
+export const PersonCard: FC<Persons_persons_persons> = (props) => {
   const { address, name, phoneNumber } = props
 
   return (
