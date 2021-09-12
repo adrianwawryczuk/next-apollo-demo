@@ -5,10 +5,13 @@ import depthLimit from 'graphql-depth-limit'
 import compression from 'compression'
 import * as http from 'http'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
+import cors from 'cors'
 
 async function startServer() {
   const app = express()
   const httpServer = http.createServer(app)
+
+  app.use(cors())
 
   const server = new ApolloServer({
     schema,
