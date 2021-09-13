@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node server",
     "start:dev": "npm run build:dev",
+    "start:prod": "ts-node src/server.ts -e ts,graphql",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "generate-types": "graphql-codegen --config codegen.yml"
   },

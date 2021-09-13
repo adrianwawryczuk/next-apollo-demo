@@ -7,10 +7,10 @@ export const PersonCard: FC<Persons_persons_persons> = (props) => {
   const { address, name, phoneNumber } = props
 
   return (
-    <div className={styles.personCard}>
+    <div className={styles.personCard} data-cy="personCard">
       <div className={styles.personCardRow}>
         <Label>Name:</Label>
-        {name}
+        <span data-cy="personCardName">{name}</span>
       </div>
       <div className={styles.personCardRow}>
         <Label>Address:</Label>

@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  api:
+    build: ./client
+    ports:
+      - '3000:3000'
+    expose:
+      - 3000
+    environment:
+      - GRAPHQLURL=http://web:4000/graphql
+    restart: always
+    networks:
+      - app-network
+  web:
+    build: ./server
+    ports:
+      - '4000:4000'
+    expose:
+      - 4000
+    environment:
+      - GRAPHQLURL=http://web:4000/graphql
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

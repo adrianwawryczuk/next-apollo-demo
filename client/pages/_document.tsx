@@ -8,7 +8,7 @@ const cspHashOf = (text: string) => {
 }
 export default class MyDocument extends Document {
   render() {
-    let csp = `default-src 'self'; script-src 'self' ${cspHashOf(
+    let csp = `default-src 'self'; script-src 'self'; connect-src http://localhost:4000; ${cspHashOf(
       NextScript.getInlineScriptSource(this.props)
     )}`
     if (process.env.NODE_ENV !== 'production') {

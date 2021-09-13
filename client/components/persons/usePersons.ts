@@ -12,9 +12,6 @@ const PAGE_LIMIT = 20
 
 export const usePersons = (initialState: InitialState, query: string) => {
   const [page, setPage] = useState(0)
-  const pagesCount = Math.ceil(initialState.count / PAGE_LIMIT)
-
-  const canLoadMore = page + 1 <= pagesCount
 
   const handleLoadMore = useCallback(() => {
     setPage(page + 1)
@@ -34,6 +31,12 @@ export const usePersons = (initialState: InitialState, query: string) => {
   const persons = loading
     ? previousData?.persons?.persons ?? initialState.persons
     : data?.persons?.persons ?? initialState.persons
+
+  const pagesCount = Math.ceil(
+    (data?.persons?.count ?? initialState.count) / PAGE_LIMIT
+  )
+
+  const canLoadMore = page + 1 < pagesCount
 
   return [persons, handleLoadMore, canLoadMore] as const
 }
