@@ -3,7 +3,7 @@ schema {
 }
 
 type Query {
-  persons(page: Int): Persons
+  persons(page: Int, query: String): Persons
 }
 
 type Persons {

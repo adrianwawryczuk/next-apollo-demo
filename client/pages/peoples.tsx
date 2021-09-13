@@ -1,8 +1,8 @@
 import { initializeApollo } from '../service/apolloClient'
-import { PERSONS_QUERY } from '../query/personsQuery'
+import { PERSONS_QUERY, PersonsQueryVariables } from '../query/personsQuery'
 import { GetServerSideProps } from 'next'
 import { Persons, Persons_persons_persons } from '../query/types/Persons'
-import { FC } from 'react'
+import { FC, FormEvent, useState } from 'react'
 import { PersonCard } from '../components/persons/PersonCard'
 import styles from './PeoplesPage.module.css'
 import { usePersons } from '../components/persons/usePersons'
@@ -13,12 +13,20 @@ interface NamesPageProps {
 }
 
 const PeoplesPage: FC<NamesPageProps> = (props) => {
-  const [accumulatedPersons, handleLoadMore, canLoadMore] = usePersons(props)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [persons, handleLoadMore, canLoadMore] = usePersons(props, searchQuery)
 
+  const handleQueryChange = (event: FormEvent<HTMLInputElement>) =>
+    setSearchQuery(event.currentTarget.value)
   return (
     <>
+      <input
+        className={styles.queryInput}
+        value={searchQuery}
+        onChange={handleQueryChange}
+      />
       <div className={styles.peoplesContainer}>
-        {accumulatedPersons.map((person) => (
+        {persons.map((person) => (
           <PersonCard {...person} key={person.id} />
         ))}
       </div>
@@ -32,10 +40,11 @@ export const getServerSideProps: GetServerSideProps<NamesPageProps> =
   async () => {
     const client = initializeApollo()
 
-    const { data } = await client.query<Persons, { page: number }>({
+    const { data } = await client.query<Persons, PersonsQueryVariables>({
       query: PERSONS_QUERY,
       variables: {
         page: 0,
+        query: '',
       },
     })
 
