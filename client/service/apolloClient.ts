@@ -10,6 +10,7 @@ import type { ApolloClient as ApolloClientType } from '@apollo/client'
 let apolloClient: ApolloClientType<NormalizedCacheObject>
 
 function createApolloClient() {
+  console.log(process.env.GRAPHQLURL)
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
     link: new HttpLink({
