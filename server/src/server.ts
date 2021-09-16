@@ -24,11 +24,10 @@ async function startServer() {
   await server.start()
   server.applyMiddleware({ app, path: '/graphql' })
 
-  httpServer.listen({ port: 4000 }, () => {
+  const port = process.env['PORT'] || 4000
+  httpServer.listen({ port }, () => {
     console.log(
-      `🚀 Server ready at http://localhost:${process.env['PORT'] || 4000}${
-        server.graphqlPath
-      }`
+      `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
     )
   })
 }
