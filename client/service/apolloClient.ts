@@ -14,7 +14,7 @@ function createApolloClient() {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined', // set to true for SSR
     link: new HttpLink({
-      uri: process.env.GRAPHQLURL ?? 'http://localhost:4000/graphql',
+      uri: 'https://next-sonepar-web-api2.herokuapp.com/graphql',
     }),
     cache: new InMemoryCache(),
   })
