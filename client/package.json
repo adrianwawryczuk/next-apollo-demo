@@ -6,7 +6,8 @@
     "start": "next dev",
     "lint": "next lint",
     "download-schema": "apollo service:download --endpoint=http://localhost:4000/graphql graphql-schema.json",
-    "codegen": "npm run download-schema && apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --tagName=gql --addTypename types"
+    "codegen": "npm run download-schema && apollo codegen:generate --localSchemaFile=graphql-schema.json --target=typescript --tagName=gql --addTypename types",
+    "publishToHeroku": "cd ../ && git subtree push --prefix client sonepar-web-client master || true"
   },
   "license": "MIT",
   "dependencies": {

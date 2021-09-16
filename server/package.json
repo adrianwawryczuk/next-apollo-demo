@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "PORT=4000 ts-node src/server.ts -e ts,graphql",
+    "start": "ts-node src/server.ts -e ts,graphql",
     "start:dev": "npm run build:dev",
+    "build": "tsc src/server.ts",
     "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
-    "generate-types": "graphql-codegen --config codegen.yml"
+    "generate-types": "graphql-codegen --config codegen.yml",
+    "publishToHeroku": "cd ../ && git subtree push --prefix server sonepar-web-api master || true"
   },
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
