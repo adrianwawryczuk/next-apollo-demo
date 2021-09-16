@@ -8,7 +8,7 @@ const cspHashOf = (text: string) => {
 }
 export default class MyDocument extends Document {
   render() {
-    let csp = `default-src 'self'; script-src 'self'; connect-src http://localhost:4000; ${cspHashOf(
+    let csp = `default-src 'self'; script-src 'self'; connect-src https://next-sonepar-web-api2.herokuapp.com/graphql; ${cspHashOf(
       NextScript.getInlineScriptSource(this.props)
     )}`
     if (process.env.NODE_ENV !== 'production') {
