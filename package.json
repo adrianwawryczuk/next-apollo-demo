@@ -11,7 +11,8 @@
     "prepare": "husky install",
     "test:e2e": "cypress run",
     "start": "concurrently \"cd server && yarn run start:dev\" \"cd client && yarn run dev\"",
-    "start:servers": "start-server-and-test 'yarn start' http://localhost:3000 'yarn test:e2e'"
+    "start:servers": "start-server-and-test 'yarn start' http://localhost:3000 'yarn test:e2e'",
+    "heroku-postbuild": "cd server && yarn install"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
