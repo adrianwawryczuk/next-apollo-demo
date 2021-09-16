@@ -5,7 +5,7 @@
   "scripts": {
     "start": "ts-node src/server.ts -e ts,graphql",
     "start:dev": "npm run build:dev",
-    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
+    "build:dev": "PORT=$PORT nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
     "generate-types": "graphql-codegen --config codegen.yml",
     "publishToHeroku": "cd ../ && git subtree push --prefix server sonepar-web-api master || true"
   },
